@@ -4,6 +4,7 @@ const authRoutes = require('./Routes/authRoute')
 const menuRoutes = require('./Routes/menuRoutes')
 const orderRoutes = require('./Routes/orderRoute')
 require("dotenv").config()
+const cors = require('cors')
 const connectDB = require("./config/db")
 
 connectDB()
@@ -12,6 +13,8 @@ const app = express()
 
 //middlleware, to recieve json data properly, middleware is return before all the routes..
 app.use(express.json())  //to accept all json request as a body, post put get or delete anything.....is very important 
+
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.status(200).json({
